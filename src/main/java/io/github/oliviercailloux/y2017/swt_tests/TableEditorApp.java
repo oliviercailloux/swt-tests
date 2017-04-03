@@ -29,7 +29,7 @@ public class TableEditorApp {
 
 	public void capture(Display display, Control control, String fileName) {
 		GC gc = new GC(control);
-		final Image image = new Image(display, control.getBounds());
+		Image image = new Image(display, control.getBounds());
 		gc.copyArea(image, 0, 0);
 		gc.dispose();
 		ImageLoader loader = new ImageLoader();
@@ -72,8 +72,11 @@ public class TableEditorApp {
 			capture(display, shell, "swt-later.png");
 		});
 		/**
-		 * Explicit layout() is required to position the control appropriately
-		 * (or must wait a bit for table editor’s own timer-triggered layout).
+		 * Calling layout() after opening (and not just before opening) is
+		 * required to position the control appropriately. Otherwise, must wait
+		 * a bit for table editor’s own timer-triggered layout, hence the text
+		 * control may appear wrongly positioned in the table for a short time
+		 * then “jump” to the right position.
 		 */
 //		tableEditor.layout();
 //		LOGGER.info("Text bounds after opening and re-layout: {}.", text.getBounds());
