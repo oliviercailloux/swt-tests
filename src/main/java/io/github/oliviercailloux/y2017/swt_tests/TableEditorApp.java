@@ -72,11 +72,11 @@ public class TableEditorApp {
 			capture(display, shell, "swt-later.png");
 		});
 		/**
-		 * Calling layout() after opening (and not just before opening) is
-		 * required to position the control appropriately. Otherwise, must wait
-		 * a bit for table editor’s own timer-triggered layout, hence the text
-		 * control may appear wrongly positioned in the table for a short time
-		 * then “jump” to the right position.
+		 * Calling layout() after opening (rather than before opening) is
+		 * required to position the text control appropriately. Otherwise, must
+		 * wait a bit for table editor’s own timer-triggered layout, hence the
+		 * text control may appear wrongly positioned in the table for a short
+		 * time then “jump” to the right position.
 		 */
 //		tableEditor.layout();
 //		LOGGER.info("Text bounds after opening and re-layout: {}.", text.getBounds());
